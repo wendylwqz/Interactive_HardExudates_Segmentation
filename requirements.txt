@@ -2,7 +2,7 @@ scipy
 numpy
 Cython
 scikit-image
-opencv-python-headless
+opencv-python-headless==4.5.5.64
 Pillow
 matplotlib
 imgaug>=0.4
