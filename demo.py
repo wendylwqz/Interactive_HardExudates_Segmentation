@@ -1,7 +1,7 @@
 import argparse
 import tkinter as tk
-
 import torch
+#print("DEBUG 1: torch imported", flush=True) # !!!
 
 from isegm.utils import exp
 from isegm.inference import utils
