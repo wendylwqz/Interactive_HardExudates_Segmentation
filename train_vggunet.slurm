@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH --job-name=he_inference
+#SBATCH --job-name=ex_inference
 #SBATCH --account=st-ipor-1-gpu
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --gres=gpu:1
 #SBATCH --mem=32G
-#SBATCH --time=01:00:00
+#SBATCH --time=12:00:00
 #SBATCH --output=/scratch/st-ipor-1/lwqz/Interactive_HardExudates_Segmentation/hpc_logs/%x-%j.out
 #SBATCH --error=/scratch/st-ipor-1/lwqz/Interactive_HardExudates_Segmentation/hpc_logs/%x-%j.err
 #SBATCH --mail-user=lwqz@student.ubc.ca
@@ -30,4 +30,6 @@ export TORCH_HOME=/scratch/st-ipor-1/lwqz/.cache/torch
 mkdir -p "$TORCH_HOME"
 
 # Run inference
-"$PYTHON" train_vggunet.py --checkpoint=checkpoints/RITM_EX.pth --automatic_weight='' --gpu=0
+"$PYTHON" train_vggunet.py --dataset_name "superset_1" \
+    --output_dir "./automatic_weights/superset_1/VGGUnet_weights" \
+    --epochs 150 \
