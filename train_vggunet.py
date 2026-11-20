@@ -163,8 +163,9 @@ def train(args, training, validation):
         if epoch == 1 or epoch % args.val_every == 0 or epoch == args.epochs:
             aupr, dice = validate(model, validation, device)
             print(f"val aupr: {aupr:.5f};   dice: {dice:.5f}", flush=True)
+            state = model.state_dict()
             if aupr > best_aupr:
-                save_atomic({"state_dict:" state, "validation:" aupr}, best_path)
+                save_atomic({"state_dict": state, "validation": aupr}, best_path)
                 best_aupr = aupr
                 print(f"saved {best_path}", flush=True)
         
